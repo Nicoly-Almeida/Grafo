@@ -10,18 +10,25 @@ public class DFSIterator<T> implements GrafoIterator<T> {
     private boolean[] visitado;
     private Grafo<T> grafo;
 
-    public DFSIterator(Grafo<T> grafo, Vertice<T> verticeInicial) {
+    public DFSIterator(Grafo<T> grafo, T carga) {
         this.grafo = grafo;
         this.pilha = new Stack<>();
+        Vertice<T> verticeInicial = getVertice(carga);
         this.visitado = new boolean[grafo.getVertices().size()];
         pilha.push(verticeInicial);
-        System.out.println(verticeInicial);
-        System.out.println(grafo.getVertices());
         visitado[grafo.getVertices().indexOf(verticeInicial)] = true;
     }
 
     public boolean hasNext() {
         return !pilha.isEmpty();
+    }
+
+    public Vertice<T> getVertice( T carga){
+        for (Vertice<T> u : grafo.getVertices()) {
+            if ( u.getCarga().equals( carga ))
+                return u;
+        }
+        return null;
     }
 
     public Vertice<T> next() {

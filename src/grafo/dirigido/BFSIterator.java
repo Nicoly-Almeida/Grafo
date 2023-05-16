@@ -10,18 +10,29 @@ public class BFSIterator<T> implements GrafoIterator<T> {
     private boolean[] visitado;
     private Grafo<T> grafo;
 
-    public BFSIterator(Grafo<T> grafo, Vertice<T> verticeInicial) {
+    public BFSIterator(Grafo<T> grafo, T carga) {
         this.grafo = grafo;
+        Vertice<T> verticeInicial = getVertice(carga);
         this.fila = new LinkedList<>();
         this.visitado = new boolean[grafo.getVertices().size()];
         fila.add(verticeInicial);
         visitado[grafo.getVertices().indexOf(verticeInicial)] = true;
     }
 
+    @Override
     public boolean hasNext() {
         return !fila.isEmpty();
     }
 
+    public Vertice<T> getVertice( T carga){
+        for (Vertice<T> u : grafo.getVertices()) {
+            if ( u.getCarga().equals( carga ))
+                return u;
+        }
+        return null;
+    }
+
+    @Override
     public Vertice<T> next() {
         Vertice<T> verticeAtual = fila.remove();
         int index = grafo.getVertices().indexOf(verticeAtual);

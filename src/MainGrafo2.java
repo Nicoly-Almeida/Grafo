@@ -76,34 +76,18 @@ public class MainGrafo2 {
 			g.addAresta("5", "1", 1);
 			g.addAresta("1", "2", 1);
 
-			g.BFS("6");
-			g.BFSDistance("5");
+			GrafoIterator iterador = g.interatorBFS(g,"6");
+			System.out.println("BFS");
+			while (iterador.hasNext()){
+				System.out.println(iterador.next());
+			}
 
-			System.out.println();
-			g.DFS("6");
-
-
-			g.clear();
-			System.out.println("Grafo foi esvaziado: " + g);
+			System.out.println("DFS");
+			iterador = g.interatorDFS(g,"6");
+			while (iterador.hasNext()){
+				System.out.println(iterador.next());
+			}
 
 		}
-
-
-//		System.out.println("Ordem de visita do DFS: ");
-//		DFSIterator<Integer> dfs = new DFSIterator<Integer>(g, v2);
-//		while (dfs.hasNext()) {
-//			Vertice<Integer> v = dfs.next();
-//			System.out.print(v.getCarga() + " ");
-//		}
-//		System.out.println();
-//
-//		System.out.println("Ordem de visita do BFS: ");
-//		BFSIterator<Integer> bfs = new BFSIterator<Integer>(g, v2);
-//		while (bfs.hasNext()) {
-//			Vertice<Integer> v = bfs.next();
-//			System.out.print(v.getCarga() + " ");
-//		}
-//		System.out.println();
-
 	}
 }

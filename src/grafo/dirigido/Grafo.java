@@ -519,5 +519,11 @@ public class Grafo<T> {
 		return grafo;
 	}
 
+	public GrafoIterator<T> interatorBFS(Grafo grafo, T carga){
+		return new BFSIterator<T>(grafo, carga);
+	}
 
+	public GrafoIterator<T> interatorDFS(Grafo grafo, T carga){
+		return new DFSIterator<T>(grafo, carga);
+	}
 }
