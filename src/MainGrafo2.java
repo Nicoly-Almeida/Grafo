@@ -76,14 +76,14 @@ public class MainGrafo2 {
 			g.addAresta("5", "1", 1);
 			g.addAresta("1", "2", 1);
 
-			GrafoIterator iterador = g.interatorBFS(g,"6");
+			GrafoIterator iterador = g.interatorBFS("6");
 			System.out.println("BFS");
 			while (iterador.hasNext()){
 				System.out.println(iterador.next());
 			}
 
 			System.out.println("DFS");
-			iterador = g.interatorDFS(g,"6");
+			iterador = g.interatorDFS("6");
 			while (iterador.hasNext()){
 				System.out.println(iterador.next());
 			}
